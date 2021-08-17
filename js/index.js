@@ -46,4 +46,4 @@ async function getProducts(url) {
   }*/
 }
 
-getProducts("http://gamehub-maria.digital/wp-json/wc/store/products");
+getProducts("https://gamehub-maria.digital/wp-json/wc/store/products");
