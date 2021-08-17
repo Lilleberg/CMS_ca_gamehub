@@ -24,7 +24,7 @@ async function getProduct() {
         <p>${results.category}<p>
       </div>
       <div class="game-info>">
-        <img src="${}" alt="Product image of ${results.name}">
+        <img src="#" alt="Product image of ${results.name}">
         <h2>Information</h2>
         <p>${results.userDescription}</p>
       </div>

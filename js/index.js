@@ -19,12 +19,14 @@ async function getProducts(url) {
           `<div class="game">
           <a href="product.html?id="${id}"><img src="${game.images[0].src}" class="img-product"></a>
           <div class="sub-content">
-            <a href="#">${game.name}</a>
+            <a href="product.html?id="${id}">${game.name}</a>
             <p class="price">${game.price_html}</p>
             <button class="button add-to-cart" data-game="${game.name}">Add to cart</button>
           </div>
         </div>`;
       }
+
+      console.log(game.id);
 
       if (game.tags[0].name === "new") {
         containerNew.innerHTML +=
