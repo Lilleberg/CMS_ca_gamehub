@@ -2,9 +2,9 @@ const containerUsed = document.querySelector(".used-games");
 const containerNew = document.querySelector(".new-releases");
 const mainSection = document.querySelector(".main-section");
 
-const url = "http://10.0.0.20/wordpress/wp-json/wc/store/products";
+//const url = "http://10.0.0.20/wordpress/wp-json/wc/store/products";
 
-async function getProducts() {
+async function getProducts(url) {
 
   //try {
   const response = await fetch(url);
@@ -48,4 +48,4 @@ async function getProducts() {
   }*/
 }
 
-getProducts();
+getProducts("http://10.0.0.20/wordpress/wp-json/wc/store/products");
