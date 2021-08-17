@@ -8,7 +8,7 @@ if (!id) {
   location.href = "index.html";
 }
 
-const url = "http://10.0.0.20/wordpress/wp-json/wc/store/products" + id;
+const url = "https://gamehub-maria.digital/wp-json/wc/store/products" + id;
 
 async function getProduct() {
 

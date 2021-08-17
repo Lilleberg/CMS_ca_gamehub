@@ -12,14 +12,14 @@ async function getProducts(url) {
   for (let i = 0; i < products.length; i++) {
     const game = products[i];
 
-    let id = i;
+    let id = i + 1;
 
     if (game.tags[0].name === "used") {
       containerUsed.innerHTML +=
         `<div class="game">
-          <a href="product.html?id="${id}"><img src="${game.images[0].src}" class="img-product"></a>
+          <a href="product.html?id=${id}"><img src="${game.images[0].src}" class="img-product"></a>
           <div class="sub-content">
-            <a href="product.html?id="${id}">${game.name}</a>
+            <a href="product.html?id=${id}">${game.name}</a>
             <p class="price">${game.price_html}</p>
             <button class="button add-to-cart" data-game="${game.name}">Add to cart</button>
           </div>
@@ -31,7 +31,7 @@ async function getProducts(url) {
     if (game.tags[0].name === "new") {
       containerNew.innerHTML +=
         `<div class="game">
-          <a href="product.html?id="${id}"><img src="${game.images[0].src}" class="img-product"</a>
+          <a href="product.html?id=${id}"><img src="${game.images[0].src}" class="img-product"</a>
           <div class="sub-content">
             <a href="product.html?id=${id}">${game.name}</a>
             <p class="price">${game.price_html}</p>
