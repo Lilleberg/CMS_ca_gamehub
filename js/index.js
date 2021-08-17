@@ -48,4 +48,4 @@ async function getProducts(url) {
   }*/
 }
 
-getProducts("http://10.0.0.20/wordpress/wp-json/wc/store/products");
+getProducts("https://10.0.0.20/wordpress/wp-json/wc/store/products");
