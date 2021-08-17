@@ -4,19 +4,19 @@ const mainSection = document.querySelector(".main-section");
 
 async function getProducts(url) {
 
-  //try {
-  const response = await fetch(url);
-  const products = await response.json();
-  console.log(products);
+  try {
+    const response = await fetch(url);
+    const products = await response.json();
+    console.log(products);
 
-  for (let i = 0; i < products.length; i++) {
-    const game = products[i];
+    for (let i = 0; i < products.length; i++) {
+      const game = products[i];
 
-    let id = i + 1;
+      let id = i + 1;
 
-    if (game.tags[0].name === "used") {
-      containerUsed.innerHTML +=
-        `<div class="game">
+      if (game.tags[0].name === "used") {
+        containerUsed.innerHTML +=
+          `<div class="game">
           <a href="product.html?id=${id}"><img src="${game.images[0].src}" class="img-product"></a>
           <div class="sub-content">
             <a href="product.html?id=${id}">${game.name}</a>
@@ -24,13 +24,13 @@ async function getProducts(url) {
             <button class="button add-to-cart" data-game="${game.name}">Add to cart</button>
           </div>
         </div>`;
-    }
+      }
 
-    console.log(game.id);
+      console.log(game.id);
 
-    if (game.tags[0].name === "new") {
-      containerNew.innerHTML +=
-        `<div class="game">
+      if (game.tags[0].name === "new") {
+        containerNew.innerHTML +=
+          `<div class="game">
           <a href="product.html?id=${id}"><img src="${game.images[0].src}" class="img-product"</a>
           <div class="sub-content">
             <a href="product.html?id=${id}">${game.name}</a>
@@ -38,12 +38,12 @@ async function getProducts(url) {
             <button class="button add-to-cart" data-game="${game.name}">Add to cart</button>
           </div>
         </div>`;
+      }
     }
-  }
-  /*} catch (error) {
+  } catch (error) {
     console.log("ERROR:" + error);
     mainSection.innerHTML = errorMessage();
-  }*/
+  }
 }
 
 getProducts("https://gamehub-maria.digital/wp-json/wc/store/products");
