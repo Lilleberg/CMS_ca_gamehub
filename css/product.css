@@ -18,7 +18,7 @@ White-ish; text: #eeedec
   display: grid;
   grid-template-columns: 1.2fr 1fr 1.2fr;
   justify-items: left;
-  column-gap: 100px;
+  column-gap: 50px;
   margin: 0px 50px;
 }
 
@@ -32,17 +32,21 @@ h1 {
 }
 
 h2, h3 {
-  font-size: 1.3em;
+  font-size: 1.3rem;
 }
 
 .page-title p {
   margin: 5px 0px 10px 0px;
   opacity: 70%;
-  font-size: 0.8em;
+  font-size: 0.8rem;
 }
 
 .payment-info, .about-seller {
-  margin-top: 2em;
+  margin-top: 0rem;
+}
+
+.about-seller {
+  margin-left: 3rem;
 }
 
 h2 {
@@ -51,6 +55,10 @@ h2 {
 
 .game-info p:last-child {
   margin: 10px 0px 20px 0px;
+}
+
+.product-image {
+  max-width: 350px;
 }
 
 .price {
@@ -146,7 +154,7 @@ h2 {
 /*
   -- MEDIUM SCREEN --
 */
-@media only screen and (min-width: 501px) and (max-width: 900px) {
+@media only screen and (min-width: 551px) and (max-width: 900px) {
   .next-img {
     display: none;
   }
@@ -196,16 +204,17 @@ h2 {
   }
 
   .about-seller {
-    margin: 20px 0px 20px 0px;
-    justify-self: start;
+    margin: 20px 0 10px 0;
+    padding: 0px;
     border-left: none;
+    justify-self: start;
   }
 }
 
 /*
   -- SMALL SCREEN --
 */
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 550px) {
   .next-img {
     display: none;
   }
@@ -234,8 +243,8 @@ h2 {
     margin: 0px;
   }
 
-  .payment-info div, .about-seller {
-    margin: 30px 0px 0px 0px;
+  .payment-info div {
+    margin-top: 40px;
   }
 
   .payment-info div p:nth-child(1) {
@@ -248,5 +257,7 @@ h2 {
 
   .about-seller {
     border-left: none;
+      margin: 0;
+      padding: 0;
   }
 }

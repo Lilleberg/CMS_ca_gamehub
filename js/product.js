@@ -3,33 +3,45 @@ const productContainer = document.querySelector(".main-content");
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
+//console.log(id);
 
 if (!id) {
   location.href = "index.html";
 }
 
-const url = "https://gamehub-maria.digital/wp-json/wc/store/products" + id;
+const url = "https://gamehub-maria.digital/wp-json/wc/store/products/" + id;
 
-async function getProduct() {
+fetch(url)
+  .then(response => response.json())
+  .then(data => getProduct(data))
+  .catch(error => productContainer.innerHTML = errorMessage());
 
-  try {
-    const response = await fetch(url);
-    const results = await response.json();
-    console.log(results);
+function getProduct(results) {
 
-    document.title = `Game Hub | ${results.name}`;
-    productContainer.innerHTML +=
+  document.title = `Game Hub | ${results.name}`;
+
+  let arr = [];
+  const categories = results.categories;
+  for (let i = 0; i < categories.length; i++) {
+    arr.push(categories[i].name);
+  }
+  const category = arr.join(", ");
+
+  if (results.tags[0].name === "used") {
+    productContainer.innerHTML =
       `<div class="page-title">
         <h1>${results.name}</h1>
-        <p>${results.category}<p>
+        <div class="categories">
+          <p>${category}<p>
+        </div>
       </div>
       <div class="game-info>">
-        <img src="#" alt="Product image of ${results.name}">
+        <img class="product-image" src="${results.images[0].src}" alt="Product image of ${results.name}">
         <h2>Information</h2>
-        <p>${results.userDescription}</p>
+        <p>${results.description}</p>
       </div>
       <div class="payment-info">
-        <p class="price">${results.price}</p>
+        <p class="price">${results.price_html}</p>
         <button class="button add-to-cart" data-game="CoD: Black Ops" data-cost="150">Add to cart</button>
         <div>
           <p>Payment methods</p>
@@ -41,7 +53,7 @@ async function getProduct() {
       <div class="about-seller">
         <div>
           <h3>About seller</h3>
-          <p>${results.seller}</p>
+          <p>Ola Nordmann</p>
         </div>
         <div class="member-since">
           <p>Member since:</p>
@@ -62,8 +74,30 @@ async function getProduct() {
           <p>Message seller</p>
         </div>
       </div>`;
-  } catch (error) {
-    console.log("ERROR:" + error);
-    mainSection.innerHTML = errorMessage();
+  }
+
+  if (results.tags[0].name === "new") {
+    productContainer.innerHTML =
+      `<div class="page-title">
+        <h1>${results.name}</h1>
+        <div class="categories">
+          <p>${category}<p>
+        </div>
+      </div>
+      <div class="game-info>">
+        <img class="product-image" src="${results.images[0].src}" alt="Product image of ${results.name}">
+        <h2>Information</h2>
+        <p>${results.description}</p>
+      </div>
+      <div class="payment-info">
+        <p class="price">${results.price_html}</p>
+        <button class="button add-to-cart" data-game="CoD: Black Ops" data-cost="150">Add to cart</button>
+        <div>
+          <p>Payment methods</p>
+          <p>Credit card</p>
+          <p>Debit card</p>
+          <p>Vipps</p>
+        </div>
+      </div>`
   }
 }

@@ -12,7 +12,7 @@ async function getProducts(url) {
     for (let i = 0; i < products.length; i++) {
       const game = products[i];
 
-      let id = i + 1;
+      let id = game.id;
 
       if (game.tags[0].name === "used") {
         containerUsed.innerHTML +=
@@ -26,7 +26,7 @@ async function getProducts(url) {
         </div>`;
       }
 
-      console.log(game.id);
+      console.log("ID: " + game.id);
 
       if (game.tags[0].name === "new") {
         containerNew.innerHTML +=
@@ -42,7 +42,7 @@ async function getProducts(url) {
     }
   } catch (error) {
     console.log("ERROR:" + error);
-    mainSection.innerHTML = errorMessage();
+    mainSection.innerHTML += errorMessage();
   }
 }
 
