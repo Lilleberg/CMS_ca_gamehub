@@ -2,27 +2,27 @@ const container = document.querySelector(".products");
 
 async function getSearchResults(url) {
 
-  //try {
-  const response = await fetch(url);
-  const products = await response.json();
-  console.log(products);
+  try {
+    const response = await fetch(url);
+    const products = await response.json();
+    console.log(products);
 
-  for (let i = 0; i < products.length; i++) {
-    const game = products[i];
-    let id = game.id;
+    for (let i = 0; i < products.length; i++) {
+      const game = products[i];
+      let id = game.id;
 
-    const categories = game.categories;
+      const categories = game.categories;
 
-    for (let j = 0; j < categories.length; j++) {
-      const category = categories[j];
+      for (let j = 0; j < categories.length; j++) {
+        const category = categories[j];
 
-      document.querySelector("h1").innerHTML = j + " results for 'action'";
+        document.querySelector("h1").innerHTML = j + " results for 'action'";
 
-      if (category.name === "Action") {
-        console.log(j);
+        if (category.name === "Action") {
+          console.log(j);
 
-        container.innerHTML +=
-          `<div class="product_item">
+          container.innerHTML +=
+            `<div class="product_item">
             <a href="product.html?id=${id}"><img src="${game.images[0].src}"></a>
             <div>
               <a href="product.html?id=${id}" class="prod_name">${game.name}</a>
@@ -32,13 +32,13 @@ async function getSearchResults(url) {
               </div>
             </div>
           </div>`;
+        }
       }
     }
-  }
-  /*} catch (error) {
+  } catch (error) {
     console.log("ERROR: " + error);
     container.innerHTML = errorMessage();
-  }*/
+  }
 }
 
 getSearchResults("https://gamehub-maria.digital/wp-json/wc/store/products");
