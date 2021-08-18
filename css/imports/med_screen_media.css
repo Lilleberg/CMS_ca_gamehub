@@ -1,11 +1,11 @@
 @media only screen and (min-width: 501px) and (max-width: 900px) {
 
   /*header / nav*/
-  footer .logo-copyright, .sign-up, nav, .filters_line {
+  footer .logo-copyright, .sign-up, .navbar, .filters_line, .navbar.large {
     display: none;
   }
 
-  #hamburger-menu:checked ~ nav {
+  #hamburger-menu {
     display: block;
   }
 

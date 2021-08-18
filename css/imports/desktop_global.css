@@ -203,6 +203,11 @@ img {
 */
 .navbar {
   padding: 2px 0px;
+  display: none;
+}
+
+.navbar.large {
+  display: block;
 }
 
 .navbar ul {

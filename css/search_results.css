@@ -150,7 +150,8 @@ h1 {
     margin: auto 20px;
   }
   .products {
-    justify-content: center;
+    justify-content: start;
+    margin-left: 50px;
   }
 
   .product_item {

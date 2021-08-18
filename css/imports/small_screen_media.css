@@ -1,10 +1,10 @@
 @media only screen and (max-width: 500px) {
 
-  footer .logo, .sign-up, nav {
+  footer .logo, .sign-up, .navbar, .navbar.large {
     display: none;
   }
 
-  #hamburger-menu:checked ~ nav {
+  #hamburger-menu {
     display: block;
   }
 
@@ -15,10 +15,6 @@
 
   footer .logo-copyright, .sign-up, nav, .filters_line {
     display: none;
-  }
-
-  #hamburger-menu:checked ~ nav {
-    display: block;
   }
 
   .navbar ul, .navbar li {
