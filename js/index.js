@@ -26,8 +26,6 @@ async function getProducts(url) {
         </div>`;
       }
 
-      console.log("ID: " + game.id);
-
       if (game.tags[0].name === "new") {
         containerNew.innerHTML +=
           `<div class="game">

@@ -42,3 +42,33 @@ async function getSearchResults(url) {
 }
 
 getSearchResults("https://gamehub-maria.digital/wp-json/wc/store/products");
+
+/*
+list = array.
+document.querySelector(".sortButton").addEventListener("click", function() {
+  list.sort((a,b) => a-b);
+  container.innerHTML = list;
+});
+
+let peopleList = [
+    {name: "Sally", age: 25},
+    {name: "Bob", age: 19},
+    {name: "Willis", age: 67},
+    {name: "Georgina", age: 34}
+];
+const peopleDiv = document.querySelector('.people');
+
+function createHTML(peopleList){
+    peopleDiv.innerHTML = "";
+    peopleList.forEach(function(person){
+    peopleDiv.innerHTML += `<div><h3>${person.name}</h3><p>${person.age}</p></div>`;
+})
+}
+
+createHTML(peopleList);
+
+document.querySelector('.sort').addEventListener("click", function(){
+    peopleList.sort((a,b) => (a.name > b.name) ? 1 : -1);
+    createHTML(peopleList);
+})
+*/

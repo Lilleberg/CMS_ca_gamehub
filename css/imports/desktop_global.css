@@ -201,6 +201,10 @@ img {
 /*
   -- NAV --
 */
+.current {
+  font-weight: 600;
+}
+
 .navbar {
   padding: 2px 0px;
   display: none;
