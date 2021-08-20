@@ -1,42 +1,6 @@
 @import "imports/typography.css";
 @import "imports/desktop_global.css";
 
-/*filters line*/
-.filters {
-  display: flex;
-  flex-wrap: nowrap;
-  font-size: 0.8em;
-}
-
-.filters div {
-  display: flex;
-  margin-right: 15px;
-  align-items: center;
-}
-
-.filters_line {
-  border-right: 2px solid;
-  padding-right: 10px;
-}
-
-.filters p, .sort-by input {
-  margin-left: 5px;
-}
-
-.remove-filters {
-  opacity: 70%;
-}
-
-#filters-box, .filter-label {
-  display: none;
-}
-
-.sort-by button {
-  padding: 2px;
-  text-transform: none;
-  margin-left: 10px;
-}
-
 /*
   -- MAIN, PRODUCTS --
 */
@@ -118,39 +82,6 @@ h1 {
     max-width: 70%;
   }
 
-  /*filters*/
-  .filters {
-    display: none;
-    position: absolute;
-    background-color: #DDDDDD;
-    color: #293238;
-    border: 2px solid;
-    border-color: #1de9b6;
-    padding: 5px 10px;
-  }
-
-  #filters-box:checked ~ .filters, .filter-label {
-    display: block;
-  }
-
-  .filter-label {
-    border: 2px solid;
-    border-color: #1de9b6;
-    background-color: #dddddd;
-    color:#293238;
-    padding: 3px;
-    max-width: 7em;
-  }
-
-  #used, #new {
-    margin-right: 5px;
-  }
-
-  .filters p, .filters div:nth-child(2),
-  .filters div:nth-child(3) {
-    margin: 5px 2px;
-  }
-
   /*main*/
   .main-content {
     margin: auto 20px;
@@ -187,35 +118,6 @@ h1 {
     max-width: 80%;
   }
 
-  /*filters*/
-  .filters {
-    display: none;
-    position: absolute;
-    background-color: #DDDDDD;
-    color: #293238;
-    border: 2px solid;
-    border-color: #1de9b6;
-    padding: 5px 10px;
-  }
-
-  .filter-label {
-    border: 2px solid;
-    border-color: #1de9b6;
-    background-color: #dddddd;
-    color:#293238;
-    padding: 3px;
-    max-width: 7em;
-  }
-
-  #used, #new {
-    margin: 0px 5px 0px 0px;
-  }
-
-  .filters p, .filters div:nth-child(2),
-  .filters div:nth-child(3) {
-    margin: 5px 2px;
-  }
-
   /*main*/
   .main-content {
     margin: 0 10px;
@@ -233,36 +135,6 @@ h1 {
 }
 
 @media only screen and (max-width: 500px) {
-
-   /*filters*/
-   .filters {
-    display: none;
-    position: absolute;
-    background-color: #DDDDDD;
-    color: #293238;
-    border: 2px solid;
-    border-color: #1de9b6;
-    padding: 5px 10px;
-  }
-
-  .filter-label {
-    border: 2px solid;
-    border-color: #1de9b6;
-    background-color: #dddddd;
-    color:#293238;
-    padding: 3px;
-    max-width: 7em;
-  }
-
-  #used, #new {
-    margin: 0px 5px 0px 0px;
-  }
-
-  .filters p, .filters div:nth-child(2),
-  .filters div:nth-child(3) {
-    margin: 5px 2px;
-  }
-
   .main-content {
     margin: 0 10px;
   }

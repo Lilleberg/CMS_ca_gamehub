@@ -32,7 +32,7 @@ function getProduct(results) {
       `<div class="page-title">
         <h1>${results.name}</h1>
         <div class="categories">
-          <p>${category}<p>
+          <p style.zIndex="-1">${category}<p>
         </div>
       </div>
       <div class="game-info>">

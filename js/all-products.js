@@ -1,9 +1,11 @@
 const container = document.querySelector(".prod-container");
 const buttonLowToHigh = document.querySelector(".lowhigh");
+let newBox = document.querySelector("#new");
+let used = document.querySelector("#used");
+const removeFilters = document.querySelector(".remove-filters");
 let productArr = [];
 let usedArr = [];
 let newArr = [];
-let fullArr = [];
 let id;
 let game;
 let usedClicked = false;
@@ -32,28 +34,46 @@ async function getAllProducts(url) {
 
 getAllProducts("https://gamehub-maria.digital/wp-json/wc/store/products");
 
-function sortByUsed() {
+function usedIsChecked() {
   usedArr = [];
+  if (newBox.checked && used.checked) {
+    newBox.checked = false;
+    used.checked = false;
+  }
+
   createHTML(productArr);
   if (this.checked) {
-    for (let i = 0; i < productArr.length; i++) {
-      if (productArr[i].tags[0].name === "used") {
-        usedArr.push(productArr[i]);
-        createHTML(usedArr);
-      }
+    listUsed();
+  }
+}
+
+function newIsChecked() {
+  newArr = [];
+  if (newBox.checked && used.checked) {
+    newBox.checked = false;
+    used.checked = false;
+  }
+
+  createHTML(productArr);
+  if (this.checked) {
+    listNew();
+  }
+}
+
+function listNew() {
+  for (let i = 0; i < productArr.length; i++) {
+    if (productArr[i].tags[0].name === "new") {
+      newArr.push(productArr[i]);
+      createHTML(newArr);
     }
   }
 }
 
-function sortByNew() {
-  newArr = [];
-  createHTML(productArr);
-  if (this.checked) {
-    for (let i = 0; i < productArr.length; i++) {
-      if (productArr[i].tags[0].name === "new") {
-        newArr.push(productArr[i]);
-        createHTML(newArr);
-      }
+function listUsed() {
+  for (let i = 0; i < productArr.length; i++) {
+    if (productArr[i].tags[0].name === "used") {
+      usedArr.push(productArr[i]);
+      createHTML(usedArr);
     }
   }
 }
@@ -63,7 +83,7 @@ function sortLowHigh() {
   usedClicked = true;
 
   for (let i = 0; i < productArr.length; i++) {
-    if (document.querySelector("#new").checked) {
+    if (newBox.checked) {
       if (newClicked) {
         for (let j = 0; j < newArr.length; j++) {
           newArr.sort((a, b) => a.prices.price - b.prices.price);
@@ -71,7 +91,7 @@ function sortLowHigh() {
       }
       createHTML(newArr);
     }
-    else if (document.querySelector("#used").checked) {
+    else if (used.checked) {
       if (usedClicked) {
         for (let j = 0; j < usedArr.length; j++) {
           usedArr.sort((a, b) => a.prices.price - b.prices.price);
@@ -90,7 +110,7 @@ function sortHighLow() {
   usedClicked = true;
 
   for (let i = 0; i < productArr.length; i++) {
-    if (document.querySelector("#new").checked) {
+    if (newBox.checked) {
       if (newClicked) {
         for (let j = 0; j < newArr.length; j++) {
           newArr.sort((a, b) => b.prices.price - a.prices.price);
@@ -98,7 +118,7 @@ function sortHighLow() {
       }
       createHTML(newArr);
     }
-    else if (document.querySelector("#used").checked) {
+    else if (used.checked) {
       if (usedClicked) {
         for (let j = 0; j < usedArr.length; j++) {
           usedArr.sort((a, b) => b.prices.price - a.prices.price);
@@ -127,7 +147,7 @@ document.querySelector(".az").addEventListener("click", function () {
     );
     createHTML(productArr);
 
-    if (document.querySelector("#used").checked) {
+    if (used.checked) {
       usedArr.sort(
         function (a, b) {
           if (a.name > b.name) {
@@ -140,7 +160,7 @@ document.querySelector(".az").addEventListener("click", function () {
         }
       );
       createHTML(usedArr);
-    } else if (document.querySelector("#new").checked) {
+    } else if (newBox.checked) {
       newArr.sort(
         function (a, b) {
           if (a.name > b.name) {
@@ -175,7 +195,7 @@ document.querySelector(".za").addEventListener("click", function () {
     );
     createHTML(productArr);
 
-    if (document.querySelector("#used").checked) {
+    if (used.checked) {
       usedArr.sort(
         function (a, b) {
           if (a.name > b.name) {
@@ -188,7 +208,7 @@ document.querySelector(".za").addEventListener("click", function () {
         }
       );
       createHTML(usedArr);
-    } else if (document.querySelector("#new").checked) {
+    } else if (newBox.checked) {
       newArr.sort(
         function (a, b) {
           if (a.name > b.name) {
@@ -222,8 +242,13 @@ function createHTML(prodArray) {
   });
 }
 
-document.querySelector("#used").addEventListener("change", sortByUsed);
-document.querySelector("#new").addEventListener("change", sortByNew);
-document.querySelector(".lowhigh").addEventListener("click", sortLowHigh);
+removeFilters.addEventListener("click", function () {
+  createHTML(productArr);
+  used.checked = false;
+  newBox.checked = false;
+});
 
+used.addEventListener("change", usedIsChecked);
+newBox.addEventListener("change", newIsChecked);
+document.querySelector(".lowhigh").addEventListener("click", sortLowHigh);
 document.querySelector(".highlow").addEventListener("click", sortHighLow);
