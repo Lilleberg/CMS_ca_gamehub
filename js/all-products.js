@@ -235,7 +235,7 @@ function createHTML(prodArray) {
       <div class="sub-content">
         <a href="product.html?id=${id}">${game.name}</a>
         <p class="price">${game.price_html}</p>
-        <button class="button add-to-cart" data-game="${game.name}">BUY</button>
+        <button class="button add-to-cart" data-game="${game.name}" data-price="${game.prices.price}">BUY</button>
       </div>
     </div>`;
   });
@@ -244,8 +244,8 @@ function createHTML(prodArray) {
 removeFilters.addEventListener("click", function () {
   let productArrRemove = [];
   for (let i = 0; i < productArr.length; i++) {
-    productArr.sort((a, b) => a.id - b.id);
-    productArrRemove.push(productArr);
+    productArr.sort((a, b) => b.id - a.id);
+    productArrRemove.push(productArr[i]);
   }
   createHTML(productArrRemove);
   used.checked = false;

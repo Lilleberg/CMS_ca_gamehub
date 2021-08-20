@@ -21,7 +21,7 @@ async function getProducts(url) {
           <div class="sub-content">
             <a href="product.html?id=${id}">${game.name}</a>
             <p class="price">${game.price_html}</p>
-            <button class="button add-to-cart" data-game="${game.name}">Add to cart</button>
+            <button class="button add-to-cart" data-game="${game.name}" data-price="${game.prices.price}">${game.add_to_cart.text}</button>
           </div>
         </div>`;
       }
@@ -33,7 +33,7 @@ async function getProducts(url) {
           <div class="sub-content">
             <a href="product.html?id=${id}">${game.name}</a>
             <p class="price">${game.price_html}</p>
-            <button class="button add-to-cart" data-game="${game.name}">Add to cart</button>
+            <button class="button add-to-cart" data-game="${game.name}" data-price="${game.prices.price}">Add to cart</button>
           </div>
         </div>`;
       }
