@@ -25,7 +25,6 @@ async function getAllProducts(url) {
 
       createHTML(products);
     }
-
   } catch (error) {
     console.log("ERROR: " + error);
     container.innerHTML = errorMessage();
@@ -243,7 +242,12 @@ function createHTML(prodArray) {
 }
 
 removeFilters.addEventListener("click", function () {
-  createHTML(productArr);
+  let productArrRemove = [];
+  for (let i = 0; i < productArr.length; i++) {
+    productArr.sort((a, b) => a.id - b.id);
+    productArrRemove.push(productArr);
+  }
+  createHTML(productArrRemove);
   used.checked = false;
   newBox.checked = false;
 });
