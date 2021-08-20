@@ -78,7 +78,7 @@
       <input type="checkbox" id="filters-box">
       <div class="filters">
         <div>
-          <p class="filters_line">Filters</p>
+          <p class="filters_line">Sort by</p>
         </div>
         <div>
           <input type="checkbox" id="used" name="used" value="used">
@@ -89,27 +89,20 @@
           <label for="new">New</label>
         </div>
         <div>
-          <p>Price</p>
-          <p><i class="fas fa-chevron-down"></i></p>
-        </div>
-        <div>
-          <p>Category</p>
-          <p><i class="fas fa-chevron-down"></i></p>
-        </div>
-        <div>
           <p>Platform</p>
           <p><i class="fas fa-chevron-down"></i></p>
         </div>
         <div class="sort-by">
-          <label for="sort">Sort by</label>
-          <input list="options" id="sort" name="sort" />
-          <datalist id="options">
-            <option value="Most popular">
-            <option value="Price: low to high">
-            <option value="Price: high to low">
-            <option value="A to Z">
-            <option value="Z to A">
-          </datalist>
+          <div class="price-sort">
+            <p>Price:</p>
+            <button class="button lowhigh">Low to high</button>
+            <button class="button highlow">High to low</button>
+          </div>
+          <div class="name-sort">
+            <p>Name:</p>
+            <button class="button az">A-Z</button>
+            <button class="button za">Z-A</button>
+          </div>
         </div>
         <div>
           <p class="remove-filters">Remove filters</p>

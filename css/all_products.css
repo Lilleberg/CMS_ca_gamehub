@@ -31,6 +31,12 @@
   display: none;
 }
 
+.sort-by button {
+  padding: 2px;
+  text-transform: none;
+  margin-left: 10px;
+}
+
 /* main, products */
 
 h1 {

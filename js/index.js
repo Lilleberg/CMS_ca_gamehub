@@ -17,7 +17,7 @@ async function getProducts(url) {
       if (game.tags[0].name === "used") {
         containerUsed.innerHTML +=
           `<div class="game">
-          <a href="product.html?id=${id}"><img src="${game.images[0].src}" class="img-product"></a>
+          <a href="product.html?id=${id}"><img src="${game.images[0].src}" class="img-product"</a>
           <div class="sub-content">
             <a href="product.html?id=${id}">${game.name}</a>
             <p class="price">${game.price_html}</p>

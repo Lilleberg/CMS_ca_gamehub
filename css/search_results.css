@@ -3,8 +3,8 @@
 
 /*filters line*/
 .filters {
-  display: grid;
-  grid-template-columns: repeat(7, auto) 1fr;
+  display: flex;
+  flex-wrap: nowrap;
   font-size: 0.8em;
 }
 
@@ -29,6 +29,12 @@
 
 #filters-box, .filter-label {
   display: none;
+}
+
+.sort-by button {
+  padding: 2px;
+  text-transform: none;
+  margin-left: 10px;
 }
 
 /*
