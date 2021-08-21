@@ -6,7 +6,6 @@ const removeFilters = document.querySelector(".remove-filters");
 let productArr = [];
 let usedArr = [];
 let newArr = [];
-let id;
 let game;
 let usedClicked = false;
 let newClicked = false;
@@ -20,7 +19,6 @@ async function getAllProducts(url) {
 
     for (let i = 0; i < products.length; i++) {
       game = products[i];
-      id = game.id;
       productArr.push(game);
 
       createHTML(products);
@@ -231,9 +229,9 @@ function createHTML(prodArray) {
   prodArray.forEach(function (game) {
     container.innerHTML +=
       `<div class="product">
-      <a href="product.html?id=${id}"><img src="${game.images[0].src}" class="img-product"></a>
+      <a href="product.html?id=${game.id}"><img src="${game.images[0].src}" class="img-product"></a>
       <div class="sub-content">
-        <a href="product.html?id=${id}">${game.name}</a>
+        <a href="product.html?id=${game.id}">${game.name}</a>
         <p class="price">${game.price_html}</p>
         <button class="button add-to-cart" data-game="${game.name}" data-price="${game.prices.price}">BUY</button>
       </div>
@@ -244,7 +242,7 @@ function createHTML(prodArray) {
 removeFilters.addEventListener("click", function () {
   let productArrRemove = [];
   for (let i = 0; i < productArr.length; i++) {
-    productArr.sort((a, b) => b.id - a.id);
+    productArr.sort((a, b) => b.game.id - a.game.id);
     productArrRemove.push(productArr[i]);
   }
   createHTML(productArrRemove);

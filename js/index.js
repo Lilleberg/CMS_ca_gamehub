@@ -1,6 +1,7 @@
 const containerUsed = document.querySelector(".used-games");
 const containerNew = document.querySelector(".new-releases");
 const mainSection = document.querySelector(".main-section");
+const buttons = document.querySelectorAll(".add-to-cart");
 
 async function getProducts(url) {
 
@@ -45,3 +46,15 @@ async function getProducts(url) {
 }
 
 getProducts("https://gamehub-maria.digital/wp-json/wc/store/products");
+
+for (let i = 0; i < buttons.length; i++) {
+  buttons[i].onclick = function () {
+    console.log("click");
+  }
+}
+
+/*buttons.forEach(function (button) {
+  button.onclick = function (event) {
+    console.log("click");
+  }
+});*/

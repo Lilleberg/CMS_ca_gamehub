@@ -3,10 +3,7 @@ const cartContainer = document.querySelector(".cart-container");
 const addToCartButton = document.querySelectorAll(".add-to-cart");
 const cart = document.querySelector(".cart");
 
-
-console.log(addToCartButton);
-
-let productsCart = [];
+let productsInCart = [];
 let gameObj = {};
 
 async function getProducts(url) {
@@ -52,9 +49,9 @@ for (let i = 0; i < addToCartButton.length; i++) {
   button.onclick = function (event) {
     console.log("click");
   }
-});
+});*/
 
-/*addToCartButton.forEach(function (button) {
+addToCartButton.forEach(function (button) {
   button.onclick = function (event) {
 
     console.log("click");
@@ -76,12 +73,12 @@ for (let i = 0; i < addToCartButton.length; i++) {
       console.log("clicked" + product);
       cart.innerHTML +=
         `<div class="cart-item">
-        <div><img src="../images/cod.jpg" alt="CoD: Black Ops product image" style="max-width:70px";></div>
-        <div class="cart-name-price">
-          <p class="game-in-cart-name">${product.name}</p>
-          <p class="game-in-cart-price">${product.price_html},-
-        </div>
-      </div>`;
+        <div><img src="../images/cod.jpg" alt="CoD: Black Ops product image" style="max-width: 80px";></div>
+          <div class="cart-name-price">
+             <p class="game-in-cart-name">${gameArr[i].name}</p>
+             <p class="game-in-cart-price">${gameArr[i].price},-
+          </div>
+       </div>`;
       totalSum.innerHTML = `<p class="total-price">Sum:</p><p>${total},-</p>`;
     }
     localStorage.setItem("cart", JSON.stringify(productsCart));
@@ -91,7 +88,7 @@ for (let i = 0; i < addToCartButton.length; i++) {
 if (productsCart.length === 0) {
   cart.innerHTML = "Your cart is empty";
   cart.style.fontStyle = "italic";
-}*/
+}
 
 getProducts("https://gamehub-maria.digital/wp-json/wc/store/products");
 

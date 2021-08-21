@@ -3,7 +3,6 @@ const productContainer = document.querySelector(".main-content");
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
-//console.log(id);
 
 if (!id) {
   location.href = "index.html";
