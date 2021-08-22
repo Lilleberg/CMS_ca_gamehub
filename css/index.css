@@ -24,7 +24,7 @@
 .news {
   display: grid;
   grid-template-rows: 0.1fr repeat(2, 1fr);
-  gap: 15px;
+  gap: 40px;
   margin: 20px 0px;
   text-align: center;
 }
@@ -63,7 +63,7 @@ h1, h2, .news h3 {
 /*
   -- MEDIUM/LARGE SCREEN --
 */
-@media only screen and (min-width: 901px) and (max-width: 1300px) {
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
 
   .top-header, .main-content, .footer-content {
     margin: 0px 40px;

@@ -9,12 +9,7 @@ cartItems.forEach(function (item) {
   sumItems += parseInt(item.price);
 
   gameInfo.innerHTML +=
-    `<div class="info-line">
-      <p>Item</p>
-      <p>Qty</p>
-      <p>Cost</p>
-    </div>
-    <div class="game">
+    `<div class="game">
       <p>${item.name}</p>
       <p>1</p>
       <p>${item.price},-</p>
