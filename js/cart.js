@@ -6,6 +6,7 @@ const cartContainer = document.querySelector(".cart-container");
 const cart = document.querySelector(".cart");
 const sumTotal = document.querySelector(".total-sum");
 
+
 let productsCart = [];
 let price = 0;
 let priceItems = 0;
@@ -17,7 +18,6 @@ async function getProducts(url) {
   try {
     const response = await fetch(url);
     const products = await response.json();
-    console.log(products);
 
     const buttons = document.querySelectorAll(".add-to-cart");
 
