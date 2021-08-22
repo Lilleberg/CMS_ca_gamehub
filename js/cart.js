@@ -24,7 +24,7 @@ async function getProducts(url) {
     buttons.forEach(item => {
       item.addEventListener("click", function (event) {
 
-        console.log("cartItems: ", item);
+        console.log("ADDED TO CART", item);
 
         gameObj = {};
 
