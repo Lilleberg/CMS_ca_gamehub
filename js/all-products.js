@@ -3,6 +3,8 @@ const buttonLowToHigh = document.querySelector(".lowhigh");
 let newBox = document.querySelector("#new");
 let used = document.querySelector("#used");
 const removeFilters = document.querySelector(".remove-filters");
+const cartItems = JSON.parse(localStorage.getItem("cart"));
+
 let productArr = [];
 let usedArr = [];
 let newArr = [];
@@ -13,9 +15,10 @@ let newClicked = false;
 async function getAllProducts(url) {
 
   try {
+    game = [];
+    productArr = [];
     const response = await fetch(url);
     const products = await response.json();
-    console.log(products);
 
     for (let i = 0; i < products.length; i++) {
       game = products[i];
@@ -23,6 +26,8 @@ async function getAllProducts(url) {
 
       createHTML(products);
     }
+
+
   } catch (error) {
     console.log("ERROR: " + error);
     container.innerHTML = errorMessage();
@@ -233,19 +238,16 @@ function createHTML(prodArray) {
       <div class="sub-content">
         <a href="product.html?id=${game.id}">${game.name}</a>
         <p class="price">${game.price_html}</p>
-        <button class="button add-to-cart" data-game="${game.name}" data-price="${game.prices.price}">BUY</button>
+        <button class="button add-to-cart" data-game="${game.name}" data-price="${game.prices.price}" data-image="${game.images[0].src}">BUY</button>
       </div>
     </div>`;
   });
 }
 
 removeFilters.addEventListener("click", function () {
-  let productArrRemove = [];
-  for (let i = 0; i < productArr.length; i++) {
-    productArr.sort((a, b) => b.game.id - a.game.id);
-    productArrRemove.push(productArr[i]);
-  }
-  createHTML(productArrRemove);
+  game = [];
+  productArr = [];
+  getAllProducts("https://gamehub-maria.digital/wp-json/wc/store/products");
   used.checked = false;
   newBox.checked = false;
 });

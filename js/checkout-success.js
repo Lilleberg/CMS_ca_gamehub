@@ -16,7 +16,7 @@ cartItems.forEach(function (item) {
     </div>`;
 });
 
-let sumTotal = sumItems + 29;
+let totalSum = sumItems + 29;
 
 costInfo.innerHTML +=
   `<div>
@@ -29,7 +29,7 @@ costInfo.innerHTML +=
   </div>
   <div class="total">
     <p>Total</p>
-    <p>${sumTotal},-</p>
+    <p>${totalSum},-</p>
   </div>`;
 
 continueShop.onclick = function () {

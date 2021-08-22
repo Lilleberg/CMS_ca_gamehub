@@ -1,108 +1,75 @@
+const containerUsed = document.querySelector(".used-games");
+const containerNew = document.querySelector(".new-releases");
+const cartIcon = document.querySelector("#cart-icon");
+const buttons = document.querySelectorAll(".add-to-cart");
+const cartContainer = document.querySelector(".cart-container");
 const cart = document.querySelector(".cart");
+const sumTotal = document.querySelector(".total-sum");
+
+let productsCart = [];
+let price = 0;
+let priceItems = 0;
+let total = 0;
+let gameObj = {};
 
 async function getProducts(url) {
 
   try {
     const response = await fetch(url);
     const products = await response.json();
+    console.log(products);
 
-    for (let i = 0; i < products.length; i++) {
-      const game = products[i];
+    const buttons = document.querySelectorAll(".add-to-cart");
 
-      const containerUsed = document.querySelector(".used-games");
-      const containerNew = document.querySelector(".new-releases");
-      const cartIcon = document.querySelector("#cart-icon");
-      const cartContainer = document.querySelector(".cart-container");
+    buttons.forEach(item => {
+      item.addEventListener("click", function (event) {
 
-      if (game.tags[0].name === "used") {
-        containerUsed.innerHTML += `
-          <div class="game">
-            <a href="product.html?id=${game.id}"><img src="${game.images[0].src}" class="img-product"</a>
-            <div class="sub-content">
-              <a href="product.html?id=${game.id}">${game.name}</a>
-              <p class="price">${game.price_html}</p>
-              <button class="button add-to-cart" data-game="${game.name}" data-price="${game.prices.price}" data-image="${game.images[0].src}">${game.add_to_cart.text}</button>
-            </div>
-          </div>`;
-      }
-      if (game.tags[0].name === "new") {
-        containerNew.innerHTML +=
-          `<div class="game">
-          <a href="product.html?id=${game.id}"><img src="${game.images[0].src}" class="img-product"</a>
-          <div class="sub-content">
-            <a href="product.html?id=${game.id}">${game.name}</a>
-            <p class="price">${game.price_html}</p>
-            <button class="button add-to-cart" data-game="${game.name}" data-price="${game.prices.price}">Add to cart</button>
-          </div>
-        </div>`;
-      }
+        console.log("cartItems: ", item);
 
-      let productsInCart = [];
-      let gameObject = {};
+        gameObj = {};
 
-      cartIcon.onclick = function () {
-        if (cartContainer.style.display === "block") {
+        gameObj = {
+          name: item.dataset.game,
+          price: item.dataset.price,
+          image: item.dataset.image,
+        };
+
+        productsCart.push(gameObj);
+
+        cartContainer.style.display = "block";
+
+        setTimeout(function () {
           cartContainer.style.display = "none";
-        } else {
-          cartContainer.style.display = "block";
-        }
-      }
+        }, 5000);
 
-      if (productsInCart.length === 0) {
-        cart.innerHTML = "Your cart is empty";
-        cart.style.fontStyle = "italic";
-      }
+        let sum = parseInt(gameObj.price);
+        total += sum;
 
-      const buttons = document.querySelectorAll(".add-to-cart");
-
-      buttons.forEach(item => {
-        item.addEventListener("click", () => {
-          console.log("Hello");
-
-          gameObject = {
-            name: item.dataset.game,
-            price: item.dataset.price,
-            image: item.dataset.image,
-          };
-
-          productsInCart.push(gameObject);
-
-          console.log(productsInCart);
-
-          cartContainer.style.display = "block";
-
-          setTimeout(function () {
-            cartContainer.style.display = "none";
-          }, 5000);
-
-          let total = 0;
-          cart.innerHTML = "";
-          const sumTotal = document.querySelector(".total-sum");
-
-          for (let j = 0; j < productsInCart; j++) {
-            let price = parseInt(productsInCart[j].prices.price);
-            let product = productArr[j];
-            total += price;
-
-            console.log("clicked" + product);
-
-            cart.innerHTML +=
-              `<div class="cart-item">
-              <div><img src="${product.images[0].src}" alt="${product.name}" style="max-width: 80px";></div>
-                <div class="cart-name-price">
-                   <p class="game-in-cart-name">${product.name}</p>
-                   <p class="game-in-cart-price">${product.price},-
-                </div>
-             </div>`;
-            totalSum.innerHTML = `<p class="total-price">Sum:</p><p>${total}</p>`;
-          }
-          localStorage.setItem("cart", JSON.stringify(productsInCart));
-        });
+        cart.innerHTML += `
+            <div class="cart-item">
+            <div><img src="${gameObj.image}" alt="product image of ${gameObj.name}" style="max-width: 80px";></div>
+              <div class="cart-name-price">
+                <p class="game-in-cart-name">${gameObj.name}</p>
+                <p class="game-in-cart-price">${gameObj.price},-</p>
+              </div>
+            </div>`;
+        sumTotal.innerHTML = `<p class="total-price">Sum:</p><p>${total},-</p>`;
+        localStorage.setItem("cart", JSON.stringify(productsCart));
       });
-    }
+    });
+
   } catch (error) {
-    console.log("ERROR ", error);
+    console.log("ERROR:" + error);
+    mainSection.innerHTML += errorMessage();
   }
 }
 
 getProducts("https://gamehub-maria.digital/wp-json/wc/store/products");
+
+cartIcon.onclick = function () {
+  if (cartContainer.style.display === "block") {
+    cartContainer.style.display = "none";
+  } else {
+    cartContainer.style.display = "block";
+  }
+}

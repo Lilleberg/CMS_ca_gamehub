@@ -1,4 +1,5 @@
 const productContainer = document.querySelector(".main-content");
+const cartItems = JSON.parse(localStorage.getItem("cart"));
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
@@ -41,7 +42,7 @@ function getProduct(results) {
       </div>
       <div class="payment-info">
         <p class="price">${results.price_html}</p>
-        <button class="button add-to-cart" data-game="CoD: Black Ops" data-cost="150">Add to cart</button>
+        <button class="button add-to-cart" data-game="${results.name}" data-price="${results.prices.price}" data-image="${results.images[0].src}">Add to cart</button>
         <div>
           <p>Payment methods</p>
           <p>Credit card</p>
@@ -90,7 +91,7 @@ function getProduct(results) {
       </div>
       <div class="payment-info">
         <p class="price">${results.price_html}</p>
-        <button class="button add-to-cart" data-game="CoD: Black Ops" data-cost="150">Add to cart</button>
+        <button class="button add-to-cart" data-game="${results.name}" data-price="${results.prices.price}">Add to cart</button>
         <div>
           <p>Payment methods</p>
           <p>Credit card</p>
