@@ -15,7 +15,6 @@ const cartItems = JSON.parse(localStorage.getItem("cart"));
 //let gameObj = {};
 
 async function getProducts(url) {
-
   try {
     const response = await fetch(url);
     const products = await response.json();
@@ -49,7 +48,6 @@ async function getProducts(url) {
     }
 
     const buttons = document.querySelectorAll(".add-to-cart");
-
   } catch (error) {
     console.log("ERROR:" + error);
     mainSection.innerHTML += errorMessage();
@@ -57,4 +55,3 @@ async function getProducts(url) {
 }
 
 getProducts("https://gamehub-maria.digital/wp-json/wc/store/products");
-

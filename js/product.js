@@ -12,12 +12,11 @@ if (!id) {
 const url = "https://gamehub-maria.digital/wp-json/wc/store/products/" + id;
 
 fetch(url)
-  .then(response => response.json())
-  .then(data => getProduct(data))
-  .catch(error => productContainer.innerHTML = errorMessage());
+  .then((response) => response.json())
+  .then((data) => getProduct(data))
+  .catch((error) => (productContainer.innerHTML = errorMessage()));
 
 function getProduct(results) {
-
   document.title = `Game Hub | ${results.name}`;
 
   let arr = [];
@@ -28,8 +27,7 @@ function getProduct(results) {
   const category = arr.join(", ");
 
   if (results.tags[0].name === "used") {
-    productContainer.innerHTML =
-      `<div class="page-title">
+    productContainer.innerHTML = `<div class="page-title">
         <h1>${results.name}</h1>
         <div class="categories">
           <p style.zIndex="-1">${category}<p>
@@ -77,8 +75,7 @@ function getProduct(results) {
   }
 
   if (results.tags[0].name === "new") {
-    productContainer.innerHTML =
-      `<div class="page-title">
+    productContainer.innerHTML = `<div class="page-title">
         <h1>${results.name}</h1>
         <div class="categories">
           <p>${category}<p>
@@ -98,6 +95,6 @@ function getProduct(results) {
           <p>Debit card</p>
           <p>Vipps</p>
         </div>
-      </div>`
+      </div>`;
   }
 }
